@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.pages>div{ display: none;}
+			/* 让pages直接子元素div全部隐藏 */
+		</style>
+	</head>
+	<body>
+		<p><a href="#/">首页</a> | <a href="#/about">关于我们</a> <a href="#/user">用户中心</a></p>
+		<div class="pages">
+			<div id="home">
+				<h1>首页内容</h1>
+			</div>
+			<div id="about">
+				<h1>关于页面内容</h1>
+			</div>
+			<div class="user">
+				<h1>用户页面</h1>
+			</div>
+		</div>
+		<script>
+			// router 页面切换的配置数组
+			// 做一个配置让hash对应 页面元素节点
+			const router =[
+				{path:"/",component:home},
+				{path:"/about",component:about},
+				{path:"/user",component:document.querySelector(".user")}
+			]
+			var currentView = router[0]; //默认显示页面 第0个
+			// 当hash发生改变时候 
+			location.hash = "#"+currentView.path; //设置当前的hash值为默认的第0个配置的path值
+			// 只要hash发生变化 触发 onhashchange事件
+			window.onhashchange=function(e){
+			   var  hash = window.location.hash.slice(1); //获取到当前的哈希值.截取从第一位到最后（去掉#号）
+			  //遍历每一个配置项
+			  router.forEach((item,index)=>{
+				   if(hash==item.path){ //如果hash值与 当前配置项的path匹配
+					   currentView.component.style.display = "none"; //默认显示页面对应的组件隐藏
+					   item.component.style.display = "block"; //配置项对应的组件显示
+					   currentView = router[index]; //重新设置当前显示的页面
+				   }
+			   })
+			}
+			
+			
+			
+	// 单页Web应用（single page web application，SPA），就是只有一张Web页面的应用，是加载单个HTML 页面并在用户与应用程序交互时动态更新该页面的Web应用程序。
+	// 1. 加载会更快了，特别二次加载，html+css+js 已经加载了，内容动态通过ajax 加载过（节省带宽）
+	// 2. 页面渲染，浏览器通过ajax获取到数据，再浏览器端渲染（更像app
+	// 3. 不利于seo
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
