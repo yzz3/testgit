@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//函数类
+			function Person(name,age){
+				this.name=name;
+				this.age=age;
+			}
+			//定义所有的实例的公用方法say
+			Person.prototype.say=function(){
+				alert(`大家好！我的名字是${this.name},今年${this.age}岁了`);
+			}
+			//prototype 
+			//类的实例
+			var p1 =new Person("mumu",20);
+			var p2=new Person("曾庆林",30);
+			//new 实例化对象
+			var p3=Person("love",50);
+			//直接调用得到函数的返回值 默认undefined
+			
+		</script>
+	</body>
+</html>
